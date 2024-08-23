@@ -42,15 +42,15 @@ const CircularCarousel: React.FC<CircularCarouselProps> = ({ data, onImageChange
       }}
       horizontal={false}
       renderItem={({ item, index }) => {
-        const onPress = () => {
-          navigation.navigate('Drink', { index });
+        const onPress = (id) => {
+          navigation.navigate('Drink', {id});
         };
         return (
           <CircularCarouselListItem
             contentOffset={contentOffset}
             imageSrc={item.image}
             index={index}
-            onPress={onPress}
+            onPress={() => onPress(item.id)}
             characteristic={item.characteristic}
             iconSrc={item.icon}
             fontFamily={fontFamily} 
