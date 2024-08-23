@@ -11,7 +11,7 @@ export default function Drink() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://${IP_URL}/produto/:${id}`)
+    axios.get(`http://${IP_URL}:3000/produtos/${id}`)
       .then(response => {
         setDrink(response.data);
         setLoading(false);
@@ -30,9 +30,11 @@ export default function Drink() {
     return <Text>Erro ao carregar o produto</Text>;
   }
 
+  console.log(drink)
+
   return (
     <View style={styles.container}>
-      <Image source={{ uri: drink.image }} style={styles.image} />
+      <Image source={drink.image} style={styles.image} />
       <Text style={styles.name}>{drink.name}</Text>
       <Text style={styles.description}>{drink.description}</Text>
       <Text style={styles.ingredientsTitle}>Ingredientes:</Text>
