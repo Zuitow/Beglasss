@@ -3,10 +3,11 @@ import { View, Text, Image, ActivityIndicator, StyleSheet } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import axios from 'axios';
 
+
 export default function Drink() {
   IP_URL = "10.144.170.32";
   const route = useRoute();
-  const { id } = route.params;  // Recebe o ID do produto passado na navegação
+  const { id, data } = route.params;  // Recebe o ID do produto passado na navegação
   const [drink, setDrink] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -29,12 +30,11 @@ export default function Drink() {
   if (!drink) {
     return <Text>Erro ao carregar o produto</Text>;
   }
-
-  console.log(drink)
-
+console.log(drink.imagem)
+//  console.log("ESTOU AQUI",data[0].image)
   return (
     <View style={styles.container}>
-      <Image source={drink.image} style={styles.image} />
+      <Image source={drink.imagem} style={styles.image} />
       <Text style={styles.name}>{drink.name}</Text>
       <Text style={styles.description}>{drink.description}</Text>
       <Text style={styles.ingredientsTitle}>Ingredientes:</Text>

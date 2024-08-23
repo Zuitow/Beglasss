@@ -22,6 +22,7 @@ const CircularCarousel: React.FC<CircularCarouselProps> = ({ data, onImageChange
   }
   );
 
+console.log(data)
   return (
     <FlatList
       data={data}
@@ -43,7 +44,7 @@ const CircularCarousel: React.FC<CircularCarouselProps> = ({ data, onImageChange
       horizontal={false}
       renderItem={({ item, index }) => {
         const onPress = (id) => {
-          navigation.navigate('Drink', {id});
+          navigation.navigate('Drink', { id, data }); // Passa a imagem como parâmetro
         };
         return (
           <CircularCarouselListItem

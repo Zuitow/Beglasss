@@ -30,6 +30,8 @@ const CircularCarouselListItem: React.FC<CircularCarouselListItemProps> = ({
   fontFamily,
 }) => {
 
+
+
   const roolStyle = useAnimatedStyle(() => {
     const inputRange = [
       (index - 2) * ListItemHeight,
