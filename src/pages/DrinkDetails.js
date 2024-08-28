@@ -5,15 +5,15 @@ import axios from 'axios';
 
 
 export default function Drink() {
-  IP_URL = "10.144.170.32";
+  IP_URL = "10.144.170.21";
   const route = useRoute();
-  const { id, data } = route.params;  // Recebe o ID do produto passado na navegação
+  const { id, image, data } = route.params;  // Recebe o ID do produto passado na navegação
   const [drink, setDrink] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     axios.get(`http://${IP_URL}:3000/produtos/${id}`)
-      .then(response => {
+    .then(response => {
         setDrink(response.data);
         setLoading(false);
       })
@@ -34,7 +34,7 @@ console.log(drink.imagem)
 //  console.log("ESTOU AQUI",data[0].image)
   return (
     <View style={styles.container}>
-      <Image source={drink.imagem} style={styles.image} />
+      <Image source={image} style={styles.image} />
       <Text style={styles.name}>{drink.name}</Text>
       <Text style={styles.description}>{drink.description}</Text>
       <Text style={styles.ingredientsTitle}>Ingredientes:</Text>
